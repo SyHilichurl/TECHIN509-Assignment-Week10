@@ -6,6 +6,13 @@ class Board:
         """
         Draw the board of Tic-Tac-Toe game
         """
+        rows = len(self.grid)
+        cols = len(self.grid[0])
+
+        for i in range(rows):
+            print(" ---" * cols)
+            print("| " + " | ".join(self.grid[i]) + " |")
+        print(" ---" * cols)
 
     def update_board(self, row: int, col: int, symbol: str) -> bool:
         """
@@ -28,6 +35,18 @@ class Board:
         Returns:
             str: The winning symbol ('X' or 'O') if there is a winner, else an empty string
         """
+        for row in range(len(self.grid)):
+            if self.grid[row][0] == self.grid[row][1] == self.grid[row][2] and self.grid[row][0] != " ":
+                return self.grid[row][0]
+        for col in range(len(self.grid[0])):
+            if self.grid[0][col] == self.grid[1][col] == self.grid[2][col] and self.grid[0][col] != " ":
+                return self.grid[0][col]
+        if self.grid[0][0] == self.grid[1][1] == self.grid[2][2] and self.grid[0][0] != " ":
+            return self.grid[0][0]
+        if self.grid[0][2] == self.grid[1][1] == self.grid[2][0] and self.grid[0][2] != " ":
+            return self.grid[0][2]
+        return ""
+
 
     def is_full(self) -> bool:
         """
