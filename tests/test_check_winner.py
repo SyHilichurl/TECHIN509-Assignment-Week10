@@ -29,4 +29,4 @@ def test_check_winner():
         ["X", "O", "O"]
     ]
     assert board.check_winner() == ""
-    
+
